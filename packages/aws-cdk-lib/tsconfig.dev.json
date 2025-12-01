@@ -30,11 +30,16 @@
     "tsBuildInfoFile": "tsconfig.dev.tsbuildinfo"
   },
   "include": [
-    "**/*.ts"
+    "**/test/**/*.ts"
   ],
   "exclude": [
     "node_modules",
     ".types-compat",
     "**/*.d.ts"
+  ],
+  "references": [
+    {
+      "path": "."
+    }
   ]
 }
