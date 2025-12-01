@@ -4,8 +4,7 @@
 // iteration (save -> run), but on CI machines we want to run the compiled
 // JavaScript for highest throughput.
 
-const isCi = !!process.env.CI || !!process.env.CODEBUILD_BUILD_ID;
-const ext = isCi ? 'js' : 'ts';
+const ext = require('./ext');
 
 module.exports = {
   // The preset deals with preferring TS over JS

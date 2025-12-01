@@ -6,7 +6,7 @@
 
 const isCi = !!process.env.CI || !!process.env.CODEBUILD_BUILD_ID;
 
-const thisPackageName = require(`${process.cwd()}/package.json`);
+const thisPackageName = require(`${process.cwd()}/package.json`).name;
 const isExceptedPackage = ['@aws-cdk/custom-resource-handlers'].includes(thisPackageName);
 
 module.exports = isCi && !isExceptedPackage ? 'js' : 'ts';
