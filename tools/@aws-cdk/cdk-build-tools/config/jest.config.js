@@ -40,4 +40,9 @@ module.exports = {
   ],
   coveragePathIgnorePatterns: ['\\.generated\\.[jt]s$', '<rootDir>/test/', '.warnings.jsii.js$', '/node_modules/'],
   reporters: ['default', ['jest-junit', { suiteName: 'jest tests', outputDirectory: 'coverage' }]],
+
+  // A consequence of doing this is that snapshots files are always named after
+  // the currently executing file, which will be different for .ts and .js
+  // extensions, so we need to do some more work to redirect always to .ts
+  snapshotResolver: `${__dirname}/snapshot-resolver.js`,
 };
