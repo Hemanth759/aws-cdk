@@ -2,7 +2,7 @@
 
 const LambdaTester = require('lambda-tester').noVersionCheck();
 const sinon = require('sinon');
-const handler = require('..');
+const handler = require('../../lib/aws-certificatemanager/dns-validated-certificate-handler');
 const nock = require('nock');
 const { mockClient } = require('aws-sdk-client-mock');
 const acm = require('@aws-sdk/client-acm');

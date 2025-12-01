@@ -5,4 +5,8 @@
 // JavaScript for highest throughput.
 
 const isCi = !!process.env.CI || !!process.env.CODEBUILD_BUILD_ID;
-module.exports = isCi ? 'js' : 'ts';
+
+const thisPackageName = require(`${process.cwd()}/package.json`);
+const isExceptedPackage = ['@aws-cdk/custom-resource-handlers'].includes(thisPackageName);
+
+module.exports = isCi && !isExceptedPackage ? 'js' : 'ts';
