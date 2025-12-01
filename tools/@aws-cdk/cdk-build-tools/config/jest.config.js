@@ -1,3 +1,12 @@
+// Crazy stuff!
+//
+// On developer boxes we want to run the .ts files directly for quickest
+// iteration (save -> run), but on CI machines we want to run the compiled
+// JavaScript for highest throughput.
+
+const isCi = !!process.env.CI || !!process.env.CODEBUILD_BUILD_ID;
+const ext = isCi ? 'js' : 'ts';
+
 module.exports = {
   // The preset deals with preferring TS over JS
   moduleFileExtensions: [
@@ -5,7 +14,7 @@ module.exports = {
     'ts',
     'js',
   ],
-  testMatch: ['<rootDir>/test/**/?(*.)+(test).ts'],
+  testMatch: [`<rootDir>/test/**/?(*.)+(test).${ext}`],
 
   // Transform TypeScript using ts-jest. Use of this preset still requires the depending
   // package to depend on `ts-jest` directly.
